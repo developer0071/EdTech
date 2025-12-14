@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Buddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -999;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 9px;
+            margin-bottom: 15px;
+            z-index: 999;
+        }
+
+        .brandName {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: gray;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .menuLinks, .menuLinks-mobile {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .menuLinks-mobile {
+            display: none;
+        }
+
+        .menuLinks a, .menuLinks-mobile a {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            padding: 8px;
+        }
+
+        .menuLinks a:hover, .menuLinks-mobile a:hover {
+            opacity: 1;
+            background-color: rgb(240, 239, 239);
+            border-radius: 10px;
+        }
+
+        #link1 {
+            background: rgba(128, 128, 128, 0.082);
+            border-radius: 10px;
+            box-shadow: 0 0 3px gray, 0 0 4px gray, 0 0 5px gray;
+        }
+
+        .top-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-h1 {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .top-p {
+            text-align: center;
+            color: gray;
+            font-size: 17px;
+            margin: 5px;
+        }
+
+        .top-bottom {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 5px;
+            color: gray;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .reminder {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(255, 143, 44);
+            border-radius: 15px;
+            margin: 25px auto;
+            padding: 15px;
+            align-items: center;
+        }
+
+        .fire {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .fire-text-hl {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .firetext {
+            font-size: 18px;
+            color: white;
+            margin: 0;
+        }
+
+        .bottom-fire-text {
+            color: rgb(217, 215, 215);
+            margin: 5px 0 0 0;
+        }
+
+        .qongiroq {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .task-holder-main {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            width: 80%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        .task-left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .task-p {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .task1, .task4 {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+            display: flex;
+            align-items: center;
+        }
+
+        .task4 {
+            background-color: #dfe5f9;
+            flex-direction: column;
+            align-items: flex-start;
+            height: auto;
+        }
+
+        .comp {
+            font-size: 25px;
+            margin-right: 15px;
+        }
+
+        .right-task-2, .right-task11, .right-task-1 {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comp-text {
+            font-size: 17px;
+        }
+
+        .one {
+            font-size: 22px;
+            color: rgb(1, 151, 1);
+        }
+
+        .five {
+            color: rgb(255, 106, 0);
+            font-size: 22px;
+        }
+
+        .seventeen {
+            font-size: 22px;
+            color: rgb(6, 6, 171);
+        }
+
+        .std-tip-info {
+            color: rgb(0, 0, 177);
+            margin-top: 3px;
+        }
+
+        .task-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task2 {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+            margin-bottom: 15px;
+        }
+
+        .label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .task-right-minis {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .task-btn1 {
+            padding: 3px 6px;
+            background-color: rgb(190, 174, 240);
+            color: rgb(62, 7, 202);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .task-btn2 {
+            padding: 3px 6px;
+            background-color: rgb(240, 174, 174);
+            color: rgb(202, 7, 7);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .task-btn11 {
+            padding: 3px 6px;
+            background-color: rgb(240, 218, 174);
+            color: rgb(202, 124, 7);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .task-btn111 {
+            padding: 3px 6px;
+            background-color: rgb(175, 240, 174);
+            color: rgb(8, 109, 6);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .task-btn-med-1, .task-btn-med-2 {
+            padding: 3px 6px;
+            background-color: rgb(240, 218, 174);
+            color: rgb(202, 124, 7);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .task-btn-low-1, .task-btn-low-2 {
+            padding: 3px 6px;
+            background-color: rgb(175, 240, 174);
+            color: rgb(8, 109, 6);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .mini-text {
+            color: gray;
+        }
+
+        .red {
+            color: rgb(202, 7, 7);
+            margin: 15px 0 10px 0;
+        }
+
+        .orange {
+            color: rgb(255, 145, 0);
+            margin: 0 0 10px 0;
+        }
+
+        .green {
+            color: green;
+            margin: 0 0 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .task-holder-main {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topbar {
+                padding: 0.8rem;
+            }
+
+            .reminder {
+                width: 90%;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .fire-text-hl {
+                margin-left: 0;
+            }
+
+            .task-holder-main {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .brandName {
+                display: none;
+            }
+
+            .menuLinks {
+                display: none;
+            }
+
+            .menuLinks-mobile {
+                display: flex;
+                gap: 1rem;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .topbar {
+                justify-content: center;
+            }
+
+            .top-h1 {
+                font-size: 1.5rem;
+            }
+
+            .top-p {
+                font-size: 15px;
+            }
+
+            .reminder {
+                width: 95%;
+            }
+
+            .task-holder-main {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="brandName">
+            <span>📚</span>
+            <span>Smart Study Buddy</span>
+        </div>
+        <ul class="menuLinks">
+            <li><a id="link1" href="#"><span>🏠</span> Dashboard</a></li>
+            <li><a href="subjects.html"><span>📖</span> Subjects</a></li>
+            <li><a href="tasks.html"><span>📝</span> Tasks</a></li>
+            <li><a href="progress.html"><span>📊</span> Progress</a></li>
+            <li><a href="resources.html"><span>📚</span> Resources</a></li>
+        </ul>
+        <ul class="menuLinks-mobile">
+            <li><a id="link1" href="#"><span>🏠</span></a></li>
+            <li><a href="subjects.html"><span>📖</span></a></li>
+            <li><a href="tasks.html"><span>📝</span></a></li>
+            <li><a href="progress.html"><span>📊</span></a></li>
+            <li><a href="resources.html"><span>📚</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="top-text">
+        <h1 class="top-h1">Smart Study Buddy</h1>
+        <p class="top-p" style="font-size: 20px; color: rgb(96, 96, 96)">Your personal study assistant</p>
+        <div class="top-bottom">
+            <i class="fa-regular fa-calendar"></i>
+            <p>Saturday, December 13, 2025</p>
+            <p>•</p>
+            <i class="fa-regular fa-clock"></i>
+            <p id="time">01:32:28 PM</p>
+        </div>
+    </div>
+
+    <div class="reminder">
+        <p class="fire">🔥</p>
+        <div class="fire-text-hl">
+            <p class="firetext">You're on fire today!</p>
+            <p class="bottom-fire-text">1 task completed, 5 to go!</p>
+        </div>
+        <p class="qongiroq">🔔</p>
+    </div>
+
+    <div class="task-holder-main">
+        <div class="task-left">
+            <p class="task-p">Quick Stats</p>
+            <div class="task1">
+                <p class="comp">✅</p>
+                <div class="right-task-2">
+                    <p class="comp-text">Completed</p>
+                    <p class="one">1</p>
+                </div>
+            </div>
+            <div class="task1">
+                <p class="comp">🟠</p>
+                <div class="right-task11">
+                    <p class="comp-text">Pending</p>
+                    <p class="five">5</p>
+                </div>
+            </div>
+            <div class="task1">
+                <p class="comp">📊</p>
+                <div class="right-task-1">
+                    <p class="comp-text">Completion Rate</p>
+                    <p class="seventeen">17%</p>
+                </div>
+            </div>
+            <div class="task4">
+                <p>💡 Study Tip</p>
+                <p class="std-tip-info">Take a 10-minute break every hour to stay focused and retain more!</p>
+            </div>
+        </div>
+
+        <div class="task-right">
+            <p class="task-p">All Tasks</p>
+            
+            <p class="red">🔴 High Priority (3)</p>
+            
+            <div class="task2">
+                <label class="label">
+                    <span>Complete Math Homework</span>
+                    <input type="radio" name="tasks">
+                </label>
+                <div class="task-right-minis">
+                    <button class="task-btn1">Math</button>
+                    <p class="mini-text">⏰ 14:00 • 1 hour</p>
+                    <button class="task-btn2">High</button>
+                </div>
+            </div>
+
+            <div class="task2">
+                <label class="label">
+                    <span>Study for Python test</span>
+                    <input type="radio" name="tasks">
+                </label>
+                <div class="task-right-minis">
+                    <button class="task-btn11">Programming</button>
+                    <p class="mini-text">⏰ 15:00 • 2 hours</p>
+                    <button class="task-btn2">High</button>
+                </div>
+            </div>
+
+            <div class="task2">
+                <label class="label">
+                    <span>Complete coding assignment</span>
+                    <input type="radio" name="tasks">
+                </label>
+                <div class="task-right-minis">
+                    <button class="task-btn111">IT</button>
+                    <p class="mini-text">⏰ 17:00 • 40 mins</p>
+                    <button class="task-btn2">High</button>
+                </div>
+            </div>
+
+            <p class="orange">🟠 Medium Priority (1)</p>
+            
+            <div class="task2">
+                <label class="label">
+                    <span>Read Chapter 5 - Physics</span>
+                    <input type="radio" name="tasks">
+                </label>
+                <div class="task-right-minis">
+                    <button class="task-btn-med-1">Science</button>
+                    <p class="mini-text">⏰ 18:00 • 1 hour</p>
+                    <button class="task-btn-med-2">Medium</button>
+                </div>
+            </div>
+
+            <p class="green">🟢 Low Priority (1)</p>
+            
+            <div class="task2">
+                <label class="label">
+                    <span>Read Chapter 7 - Biology</span>
+                    <input type="radio" name="tasks">
+                </label>
+                <div class="task-right-minis">
+                    <button class="task-btn-low-1">Science</button>
+                    <p class="mini-text">⏰ 19:00 • 1 hour</p>
+                    <button class="task-btn-low-2">Low</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <video autoplay muted loop id="background">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+            document.getElementById('time').textContent = timeStr;
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

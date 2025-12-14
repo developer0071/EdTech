@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTech Splash Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #1a1a2e;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        .shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFB75E 0%, #FF6B9D 50%, #C471ED 100%);
+            border-radius: 20px;
+            opacity: 0;
+            animation: morphShape 3s ease-in-out forwards;
+        }
+        @keyframes morphShape {
+            0% {
+                width: 80px;
+                height: 80px;
+                border-radius: 20px;
+                opacity: 1;
+            }
+            25% {
+                width: 120px;
+                height: 120px;
+                border-radius: 25px;
+            }
+            50% {
+                width: 150px;
+                height: 150px;
+                border-radius: 30px;
+            }
+            75% {
+                width: 600px;
+                height: 600px;
+                border-radius: 50px;
+            }
+            100% {
+                width: 150vw;
+                height: 150vh;
+                border-radius: 0;
+                opacity: 1;
+            }
+        }
+    .edtech-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(40px, 10vw, 65px);
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 5px;
+            opacity: 0;
+            text-transform: uppercase;
+            animation: 
+                fadeInText 0.8s ease-out 2.5s forwards,
+                textGlow 2s ease-in-out 3s infinite alternate;
+            z-index: 5;
+        }
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px #FF6B9D;
+            }
+            100% {
+                text-shadow: 0 0 15px #FFFFFF, 0 0 30px #C471ED;
+            }
+        }
+
+@keyframes fadeOutScreen {
+to {
+    opacity: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="shape"></div>
+        
+        <div class="edtech-text">EdTech</div> 
+    </div>
+
+<script>
+        const Duration_time = 4500;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            
+            setTimeout(() => {
+                if (splashScreen) {
+                    splashScreen.classList.add('fade-out');
+                }
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html'; 
+                }, 500);
+                
+            }, Duration_time);             
+        });
+</script>
+</body>
+</html>

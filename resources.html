@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<style>
+  .topbar {
+      z-index: 999;
+      position: sticky;
+      top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px;
+      border-radius: 9px;
+    }
+    .brandName {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: gray;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .menuLinks {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .menuLinks a {
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .menuLinks a:hover {
+      opacity: 1;
+    }
+    .li {
+      padding: 8px;
+    }
+    .li:hover {
+      background-color: rgb(240, 239, 239);
+      padding: 8px;
+      border-radius: 10px;
+    }
+    .top {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .top span{
+        color: rgb(104, 103, 103);
+    }
+    .bottom{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      justify-content: center;
+      align-items: center;
+    }
+    .bottom p {
+      padding-right: 15px;
+    }
+    .d{
+        margin-top: 40px;
+        padding-top: 30px;
+        border-radius: 13px;
+        width: 390px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        height: 200px;
+    }
+    .wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .d p{
+      font-size: 10px;
+    }
+    .d span{
+      margin-left: 30px;
+      padding: 5px;
+      border-radius: 16px;
+      background-color: rgb(240, 239, 239);
+      font-size: small;
+    }
+    .bottom:active{
+        border-color: 1px solid rgb(117, 61, 221);
+    }
+    .bottom h3{
+        padding-left: 37px;
+    }
+
+    .bottom p{
+        font-size: 19px;
+        padding-left: 37px;
+        color: rgb(104, 103, 103);
+    }
+    .s{
+      margin: 0;
+      padding: 0;
+      padding: 15px;
+      padding-right: 5px;
+      background-color: rgb(222, 232, 255);
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+  a{
+    font-family: "Roboto", sans-serif;
+  }
+      a {
+      font-family: "Roboto", sans-serif;
+    }
+    span {
+      font-family: "Roboto", sans-serif;
+    }
+    p {
+      font-family: "Roboto", sans-serif;
+    }
+    li {
+      font-family: "Roboto", sans-serif;
+    }
+    button {
+      font-family: "Roboto", sans-serif;
+    }
+    h1 {
+      font-family: "Roboto", sans-serif;
+    }
+    h3 {
+      font-family: "Roboto", sans-serif;
+    }
+    .menuLinks-mobile {
+      display: none;
+    }
+    .hreff{
+      color: rgb(0, 90, 193);
+      text-decoration: none;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif;
+    }
+    .hreff:hover{
+      color: rgb(3, 53, 110);
+      text-decoration: underline;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif;
+    }
+    .hreff:visited{
+      color: rgb(68, 4, 118);
+    }
+    @media (max-width: 1000px) {
+    .bottom{
+      grid-template-columns: repeat(2,1fr);
+    }
+    }
+    @media (max-width: 580px) {
+    .bottom{
+      grid-template-columns: 1fr;
+    }
+    .brandName{
+        display: none;
+    }
+    .menuLinks {
+        display: none;
+    }
+
+    .menuLinks a {
+        display: none;
+    }
+
+    .menuLinks-mobile {
+        transform: translateX(-50px);
+        display: flex;
+        gap: 3.2rem;
+        list-style: none;
+    }
+    .menuLinks-mobile a {
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menuLinks-mobile a:hover {
+        opacity: 1;
+    }
+    }
+
+
+    
+    #link5{
+      background: rgba(128, 128, 128, 0.082);
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: 
+      0 0 3px gray,
+      0 0 4px gray,
+      0 0 5px gray;
+    }
+    #background{
+          top: 0;
+          right: 0;
+          position: fixed;
+          min-width: 100%;
+          min-height: 100%;
+          object-fit: cover;
+          z-index: -999;
+      }
+</style>
+<body>
+    <div class="wholepage2">
+      <nav class="topbar">
+      <div class="brandName">
+        <span>📚</span>
+        <span>Smart Study Buddy</span>
+      </div>
+      <ul class="menuLinks">
+          <li class="li">
+            <a id="link1"  href="dashboard.html"><span>🏠</span> Dashboard</a>
+          </li>
+          <li class="li">
+            <a id="link2" href="subjects.html"><span>📖</span> Subjects</a>
+          </li>
+          <li class="li">
+            <a id="link3" href="tasks.html"><span>📝</span> Tasks</a>
+          </li>
+          <li class="li">
+            <a id="link4" href="progress.html"><span>📊</span> Progress</a>
+          </li>
+          <li class="li">
+            <a id="link5" href="resources.html"><span>📚</span> Resources</a>
+          </li>
+        </ul>
+        <ul class="menuLinks-mobile">
+            <li><a id="link1" href="dashboard.html"><span>🏠</span></a></li>
+            <li><a id="link2" href="subjects.html"><span>📖</span></a></li>
+            <li><a id="link3" href="tasks.html"><span>📝</span></a></li>
+            <li><a id="link4" href="progress.html"><span>📊</span></a></li>
+            <li><a id="link5" href="resources.html"><span>📚</span></a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="wrapper">
+        <div class="top">
+              <h1>Resources</h1>
+              <span>Manage your study subjects and topics</span>
+            </div>
+            <div class="bottom">
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-book-open"></i> </span><a href="https://www.google.com/search?q=coursera&oq=coursera&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YxwEY0QMYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgATSAQgzNjU3ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8" class="hreff">Khan Academy</a></h3>
+                      <span >Learning Platforms</span>
+                      <p>Free online courses, lessons, and practice for math,science, and more.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-video"></i> </span><a href="https://www.coursera.org/?irclickid=0Qs1GTWk8xycT%3ARx-30mPU2MUkp3ZgWfZXZ3Wg0&irgwc=1&utm_campaignid=ATheFashion&utm_medium=sem&utm_source=gg&utm_campaign=b2c_apac_x_multi_ftcof_career-academy_cx_dr_bau_gg_pmax_pr_s4_en_m_hyb_25-08_desktop&campaignid=22908721878&adgroupid=&device=c&keyword=&matchtype=&network=x&devicemodel=&creativeid=&assetgroupid=6603346801&targetid=&extensionid=&placement=&gad_source=1&gad_campaignid=22908752121&gbraid=0AAAAADdKX6bVA5oGW0JH9-WJVEMYJxEDV&gclid=Cj0KCQiAuvTJBhCwARIsAL6Demi8LNw4sa1LRb2GOFxiniA5eG0GwdJGzvDaHtqLC66w0NV3y4WuEpsaAj5FEALw_wcB" class="hreff">Coursera</a></h3>
+                      <span>Online Courses</span>
+                    <p>Online courses from top universities and companies worldwide.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-file"></i> </span><a href="https://quizlet.com/ru" class="hreff">Quizlet</a></h3>
+                      <span>Study Tools</span>
+                      <p>Study with fleshcards, games, and quizzes to master any subject.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-video"></i> </span><a href="https://ed.ted.com/" class="hreff">TED-Ed</a></h3>
+                      <span>Video Learning</span>
+                    <p>Educatioanl videos and lessons covering diverse topics.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-globe"></i> </span><a href="https://www.duolingo.com/" class="hreff">Duolingo</a></h3>
+                      <span>Languages</span>
+                    <p>Educatioanl videos and lessons covering diverse topics.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-globe"></i> </span><a href="https://ed.ted.com/" class="hreff">TED-Ed</a></h3>
+                      <span>Programming</span>
+                    <p>Learn to code for free with interactive tutorials and projects.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-headphones"></i> </span><a href="https://open.spotify.com/genre/0JQ5IMCbQBLrJ8yYHGwaev" class="hreff">Spotify Study Playlists</a></h3>
+                      <span>Focus Music</span>
+                    <p>Curated playlists to help you focus and study better.</p>
+                  </div>
+                  <div class="d">
+                      <h3><span class="s"><i class="fa-solid fa-file"></i> </span><a href="https://scholar.google.com/" class="hreff">Google Scholar</a></h3>
+                      <span>Research</span>
+                    <p>Search fo scholarly literature across many disciplines.</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <video autoplay muted loop id="background">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+</body>
+</html>

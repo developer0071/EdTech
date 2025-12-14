@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .topbar {
+      z-index: 999;
+      position: sticky;
+      top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px;
+      border-radius: 9px;
+    }
+    .brandName {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: gray;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .menuLinks {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .menuLinks a {
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .menuLinks a:hover {
+      opacity: 1;
+    }
+    .sub {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .sub span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(104, 103, 103);
+    }
+    .subject {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .subject div {
+      justify-content: center;
+      margin-top: 40px;
+      border-radius: 13px;
+      width: 330px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .subject:active {
+      border-color: 1px solid rgb(117, 61, 221);
+    }
+    .subject li::marker {
+      color: rgb(117, 61, 221);
+      font-size: 1.2em;
+    }
+    .subject li {
+      color: rgb(89, 77, 100);
+    }
+    .subject h3 {
+      padding-left: 37px;
+    }
+    .subject p {
+      font-size: 19px;
+      padding-left: 37px;
+      color: rgb(104, 103, 103);
+    }
+    .subject button {
+      padding: 9px 65px;
+      font-size: 16px;
+      border-radius: 7px;
+      border: none;
+      margin-top: 25px;
+      color: blue;
+      background-color: rgb(236, 242, 252);
+    }
+    .addnew {
+      justify-content: center;
+    }
+    .addnew div {
+      justify-content: center;
+      width: 1200px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      max-height: 270px;
+    }
+    .new-subject {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      color: black;
+      width: 1000px;
+      border-radius: 16px;
+      padding: 3rem;
+      border: 1px dashed;
+      backdrop-filter: blur(2px);
+      font-size: larger;
+      background-color: rgb(250, 253, 255);
+      margin-top: 30px;
+    }
+    .new-subject button {
+      width: 70px;
+      height: 70px;
+      border-radius: 50px;
+      font-size: 40px;
+      border: none;
+      color: rgb(119, 119, 119);
+      background-color: white;
+      box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+        rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    }
+    .sub-holder {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-bottom: 40px;
+    }
+    .s1 {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(214, 214, 255);
+    }
+    .s2 {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(225, 191, 239);
+    }
+    .s3 {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(199, 239, 191);
+    }
+    .s4 {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(239, 230, 191);
+    }
+    h3 {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-content: center;
+      align-items: center;
+    }
+    a {
+      font-family: "Roboto", sans-serif;
+    }
+    span {
+      font-family: "Roboto", sans-serif;
+    }
+    p {
+      font-family: "Roboto", sans-serif;
+    }
+    li {
+      font-family: "Roboto", sans-serif;
+    }
+    button {
+      font-family: "Roboto", sans-serif;
+    }
+    h1 {
+      font-family: "Roboto", sans-serif;
+    }
+    h3 {
+      font-family: "Roboto", sans-serif;
+    }
+    .new-p {
+      font-family: "Roboto", sans-serif;
+    }
+    .new-title {
+      font-family: "Roboto", sans-serif;
+    }
+    .menuLinks-mobile {
+      display: none;
+    }
+    #background {
+        top: 0;
+        right: 0;
+        position: fixed;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: -999;
+      }
+    @media (max-width: 580px) {
+    .brandName{
+        display: none;
+    }
+    .menuLinks {
+        display: none;
+    }
+
+    .menuLinks a {
+        display: none;
+    }
+
+    .menuLinks-mobile {
+        transform: translateX(-50px);
+        display: flex;
+        gap: 3.2rem;
+        list-style: none;
+    }
+    .menuLinks-mobile a {
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+        padding: 0px;
+    }
+
+    .menuLinks-mobile a:hover,a:active {
+        opacity: 1;
+        padding: 5px;
+        transition: all 0.5s ;
+    }
+    }
+    #link2{
+      background: rgba(128, 128, 128, 0.082);
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: 
+      0 0 3px gray,
+      0 0 4px gray,
+      0 0 5px gray;
+    }
+    a{
+      padding: 5px;
+    }
+  </style>
+  <body>
+    <div class="wholepage">
+      <nav class="topbar">
+        <div class="brandName">
+          <span>📚</span>
+          <span>Smart Study Buddy</span>
+        </div>
+        <ul class="menuLinks">
+          <li class="li">
+            <a id="link1"  href="dashboard.html"><span>🏠</span> Dashboard</a>
+          </li>
+          <li class="li">
+            <a id="link2" href="subjects.html"><span>📖</span> Subjects</a>
+          </li>
+          <li class="li">
+            <a id="link3" href="tasks.html"><span>📝</span> Tasks</a>
+          </li>
+          <li class="li">
+            <a id="link4" href="progress.html"><span>📊</span> Progress</a>
+          </li>
+          <li class="li">
+            <a id="link5" href="resources.html"><span>📚</span> Resources</a>
+          </li>
+        </ul>
+        <ul class="menuLinks-mobile">
+            <li><a id="link1" href="dashboard.html"><span>🏠</span></a></li>
+            <li><a id="link2" href="subjects.html"><span>📖</span></a></li>
+            <li><a id="link3" href="tasks.html"><span>📝</span></a></li>
+            <li><a id="link4" href="progress.html"><span>📊</span></a></li>
+            <li><a id="link5" href="resources.html"><span>📚</span></a></li>
+        </ul>
+      </nav>
+      <div class="sub">
+        <h1 style="text-align: center;">Subjects</h1>
+        <span>Manage your study subjects and topics</span>
+      </div>
+      <div class="subject">
+        <div style="padding-bottom: 20px">
+          <h3>
+            <span class="s1"><i class="fa-solid fa-book-open"></i></span>Math
+          </h3>
+          <p>Topics</p>
+          <ul>
+            <li>Algebra</li>
+            <li>Geometry</li>
+            <li>Calculus</li>
+            <button>+ Add Study Task</button>
+          </ul>
+        </div>
+        <div style="padding-bottom: 20px">
+          <h3>
+            <span class="s2"><i class="fa-solid fa-book-open"></i></span>English
+          </h3>
+          <p>Topics</p>
+          <ul>
+            <li>Literature</li>
+            <li>Writing</li>
+            <li>Grammar</li>
+            <button>+ Add Study Task</button>
+          </ul>
+        </div>
+        <div style="padding-bottom: 20px">
+          <h3>
+            <span class="s3"><i class="fa-solid fa-book-open"></i></span>IT
+          </h3>
+          <p>Topics</p>
+          <ul>
+            <li>Programming</li>
+            <li>Web Design</li>
+            <li>Databases</li>
+            <button>+ Add Study Task</button>
+          </ul>
+        </div>
+        <div style="padding-bottom: 20px">
+          <h3>
+            <span class="s4"><i class="fa-solid fa-book-open"></i></span>Science
+          </h3>
+          <p>Topics</p>
+          <ul>
+            <li>Physics</li>
+            <li>Chemistry</li>
+            <li>Biology</li>
+            <button>+ Add Study Task</button>
+          </ul>
+        </div>
+      </div>
+      <div class="sub-holder">
+        <div class="new-subject">
+          <div class="new-plus" style="margin-bottom: 15px">
+            <button onclick="location.href='tasks.html'">+</button>
+          </div>
+          <div class="new-title" style="margin-bottom: 8px">
+            Add New Subject
+          </div>
+          <div class="new-p" style="color: gray; font-size: 15px">
+            Click to create a new subject
+          </div>
+        </div>
+      </div>
+    </div>
+      <video autoplay muted loop id="background">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+  </body>
+</html>
